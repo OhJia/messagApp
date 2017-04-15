@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Messages View Controller-->
         <scene sceneID="7MM-of-jgj">
             <objects>
-                <viewController id="ObA-dk-sSI" customClass="MessagesViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ObA-dk-sSI" customClass="MessagesViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qkL-Od-lgU"/>
                         <viewControllerLayoutGuide type="bottom" id="n38-gi-rB5"/>
@@ -17,23 +21,162 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1e-fi-ked">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NY8-u0-nkx">
+                                <rect key="frame" x="85" y="363" width="150" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iXO-WS-CcR">
+                                        <rect key="frame" x="11" y="11" width="128" height="128"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MtW-BP-SDn">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="36"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMJ-6n-XI3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                        <color key="backgroundColor" red="0.83219518339999998" green="0.83219518339999998" blue="0.83219518339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="0tg-gj-fOo"/>
+                                                            <constraint firstAttribute="width" constant="36" id="o2r-Mp-Wwl"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="btnPressed:" destination="ObA-dk-sSI" eventType="touchUpInside" id="k9h-Vb-Kes"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJH-KG-FGH">
+                                                        <rect key="frame" x="46" y="0.0" width="36" height="36"/>
+                                                        <color key="backgroundColor" red="0.83219518339999998" green="0.83219518339999998" blue="0.83219518339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="36" id="V9z-F5-mRb"/>
+                                                            <constraint firstAttribute="height" constant="36" id="vc7-Os-Xd5"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="btnPressed:" destination="ObA-dk-sSI" eventType="touchUpInside" id="NU6-0S-Jdy"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dy-Th-icM">
+                                                        <rect key="frame" x="92" y="0.0" width="36" height="36"/>
+                                                        <color key="backgroundColor" red="0.83219518339999998" green="0.83219518339999998" blue="0.83219518339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="Y4O-Wr-EVI"/>
+                                                            <constraint firstAttribute="width" constant="36" id="siG-jw-1Cr"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="btnPressed:" destination="ObA-dk-sSI" eventType="touchUpInside" id="EXr-Ef-ydD"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zB4-Ex-nhU">
+                                                <rect key="frame" x="0.0" y="46" width="128" height="36"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h6-yA-jRa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                        <color key="backgroundColor" red="0.83219518339999998" green="0.83219518339999998" blue="0.83219518339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="h03-xl-wa2"/>
+                                                            <constraint firstAttribute="width" constant="36" id="mZ8-5d-SRn"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="btnPressed:" destination="ObA-dk-sSI" eventType="touchUpInside" id="zfs-el-l7K"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3G-3T-7xO">
+                                                        <rect key="frame" x="46" y="0.0" width="36" height="36"/>
+                                                        <color key="backgroundColor" red="0.83219518339999998" green="0.83219518339999998" blue="0.83219518339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="36" id="4s9-ym-M1l"/>
+                                                            <constraint firstAttribute="height" constant="36" id="OVe-Gk-mfo"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="btnPressed:" destination="ObA-dk-sSI" eventType="touchUpInside" id="k1w-CL-ift"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvf-pt-74Q">
+                                                        <rect key="frame" x="92" y="0.0" width="36" height="36"/>
+                                                        <color key="backgroundColor" red="0.83219518339999998" green="0.83219518339999998" blue="0.83219518339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="Txa-pg-qUJ"/>
+                                                            <constraint firstAttribute="width" constant="36" id="y8Q-sB-DCZ"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="btnPressed:" destination="ObA-dk-sSI" eventType="touchUpInside" id="glo-Xm-9qg"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="r5x-Ow-6nL">
+                                                <rect key="frame" x="0.0" y="92" width="128" height="36"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SA5-NM-3CO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                        <color key="backgroundColor" red="0.83219518339999998" green="0.83219518339999998" blue="0.83219518339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="O0t-8V-0Ju"/>
+                                                            <constraint firstAttribute="width" constant="36" id="Wxw-tL-VgP"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="btnPressed:" destination="ObA-dk-sSI" eventType="touchUpInside" id="0Yd-0s-qX6"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcU-ms-nRj">
+                                                        <rect key="frame" x="46" y="0.0" width="36" height="36"/>
+                                                        <color key="backgroundColor" red="0.83219518339999998" green="0.83219518339999998" blue="0.83219518339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="36" id="DYD-re-2dE"/>
+                                                            <constraint firstAttribute="height" constant="36" id="vfa-67-4Zy"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="btnPressed:" destination="ObA-dk-sSI" eventType="touchUpInside" id="KmV-5Q-z04"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqt-kN-Zcd">
+                                                        <rect key="frame" x="92" y="0.0" width="36" height="36"/>
+                                                        <color key="backgroundColor" red="0.83219518339999998" green="0.83219518339999998" blue="0.83219518339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="2z8-bA-Pyi"/>
+                                                            <constraint firstAttribute="width" constant="36" id="7lZ-YJ-eKC"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="btnPressed:" destination="ObA-dk-sSI" eventType="touchUpInside" id="FoL-bM-8hb"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="4FP-w9-9Ej"/>
+                                    <constraint firstItem="iXO-WS-CcR" firstAttribute="centerY" secondItem="NY8-u0-nkx" secondAttribute="centerY" id="AFi-5m-k73"/>
+                                    <constraint firstAttribute="height" constant="150" id="FTB-5e-TMN"/>
+                                    <constraint firstItem="iXO-WS-CcR" firstAttribute="centerX" secondItem="NY8-u0-nkx" secondAttribute="centerX" id="yg1-Q1-oVb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="d1e-fi-ked" secondAttribute="centerY" id="H0s-hz-dDP"/>
-                            <constraint firstAttribute="centerX" secondItem="d1e-fi-ked" secondAttribute="centerX" id="wFy-hW-Bib"/>
+                            <constraint firstItem="NY8-u0-nkx" firstAttribute="centerX" secondItem="zMn-AG-sqS" secondAttribute="centerX" id="T4r-gJ-yFy"/>
+                            <constraint firstItem="n38-gi-rB5" firstAttribute="top" secondItem="NY8-u0-nkx" secondAttribute="bottom" constant="15" id="wS9-ZN-80t"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
+                    <connections>
+                        <outlet property="gridView" destination="NY8-u0-nkx" id="9N6-01-KJ4"/>
+                        <outletCollection property="Buttons" destination="cMJ-6n-XI3" collectionClass="NSMutableArray" id="AtJ-X2-ByR"/>
+                        <outletCollection property="Buttons" destination="SJH-KG-FGH" collectionClass="NSMutableArray" id="yHr-kA-xJi"/>
+                        <outletCollection property="Buttons" destination="7Dy-Th-icM" collectionClass="NSMutableArray" id="Px1-P8-i9u"/>
+                        <outletCollection property="Buttons" destination="3h6-yA-jRa" collectionClass="NSMutableArray" id="t5V-ho-fx2"/>
+                        <outletCollection property="Buttons" destination="v3G-3T-7xO" collectionClass="NSMutableArray" id="CbC-zT-VCG"/>
+                        <outletCollection property="Buttons" destination="Hvf-pt-74Q" collectionClass="NSMutableArray" id="GrH-Sd-AVm"/>
+                        <outletCollection property="Buttons" destination="SA5-NM-3CO" collectionClass="NSMutableArray" id="ZOB-q6-NUO"/>
+                        <outletCollection property="Buttons" destination="AcU-ms-nRj" collectionClass="NSMutableArray" id="8ju-Ki-RPt"/>
+                        <outletCollection property="Buttons" destination="yqt-kN-Zcd" collectionClass="NSMutableArray" id="Hao-Mq-GSl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.59999999999999" y="130.43478260869566"/>
         </scene>
     </scenes>
 </document>

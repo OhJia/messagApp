@@ -11,15 +11,23 @@ import Messages
 
 class MessagesViewController: MSMessagesAppViewController {
     
+    @IBOutlet weak var gridView: UIView!
+    @IBOutlet var Buttons: [UIButton]!
+    
+    // array to track buttons
+    var gameStatus = [String](repeating: "-", count: 9)
+    // temp store for current player choice
+    var currentPlayer: String = "X"
+    var caption = "Want to play Tic-Tac-Toe?"
+    
+    // start message session
+    var session: MSSession?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Conversation Handling
     
@@ -28,6 +36,19 @@ class MessagesViewController: MSMessagesAppViewController {
         // This will happen when the extension is about to present UI.
         
         // Use this method to configure the extension and restore previously stored state.
+        if let messageURL = conversation.selectedMessage?.url {
+            decodeURL(messageURL)
+            caption = "It's your move!"
+            
+            // extract session
+            session = conversation.selectedMessage?.session
+        }
+        
+        for (index, item) in gameStatus.enumerated() {
+            if item != "-" {
+                Buttons[index].setTitle(item, for: .normal)
+            }
+        }
     }
     
     override func didResignActive(with conversation: MSConversation) {
@@ -68,5 +89,99 @@ class MessagesViewController: MSMessagesAppViewController {
     
         // Use this method to finalize any behaviors associated with the change in presentation style.
     }
+    
+    @IBAction func btnPressed(_ sender: UIButton) {
+        for (index, button) in Buttons.enumerated() {
+            if button.isEqual(sender) {
+                
+                if gameStatus[index].isEqual("-") {
+                    gameStatus[index] = currentPlayer
+                    sender.setTitle(currentPlayer, for: .normal)
+                    
+                    let url = prepareURL()
+                    prepareMessage(url)
+                }
+            }
+        }
+    }
+    
+    // Create URL/queryItem array to insert data into messages
+    func prepareURL() -> URL {
+        /*
+            https://www.ebookfrenzy.com?currentPlayer=X&position0=X&position1=O&position2=-&position3=-&position4=-&position5=-&position6=X&position7=-&position8=-
+         */
+        var components = URLComponents()
+        components.scheme = "https";
+        components.host = "www.ebookfrenzy.com";
+       
+        let playerQuery = URLQueryItem(name: "currentPlayer",
+                                       value: currentPlayer)
+        components.queryItems = [playerQuery]
+        
+        for (index, value) in gameStatus.enumerated() {
+            let queryItem = URLQueryItem(name: "position\(index)",
+                value: value)
+            components.queryItems?.append(queryItem)
+        }
+        
+        return components.url!
+    }
+    
+    // Create message bubble
+    func prepareMessage(_ url: URL) {
+        
+        if session == nil {
+            session = MSSession()
+        }
+        
+        //let message = MSMessage()
+        let message = MSMessage(session: session!)
+        
+        
+        let layout = MSMessageTemplateLayout()
+        layout.caption = caption
+    
+        
+        // Create image for current game state: from gridView UIView object
+        UIGraphicsBeginImageContextWithOptions(gridView.bounds.size,
+                                               gridView.isOpaque, 0);
+        self.gridView.drawHierarchy(in: gridView.bounds,
+                                    afterScreenUpdates: true)
+        
+        layout.image = UIGraphicsGetImageFromCurrentImageContext()!;
+        UIGraphicsEndImageContext();
+        
+        message.layout = layout
+        message.url = url // pass in queryItem
+        
+        let conversation = self.activeConversation
+        
+        conversation?.insert(message, completionHandler: {(error) in
+            if let error = error {
+                print(error)
+            }
+        })
+        
+        self.dismiss() // Message view controller is dismissed from view
+    }
+    
+    
+    // Message receipt handling
+    func decodeURL(_ url: URL) {
+        
+        let components = URLComponents(url: url,
+                                       resolvingAgainstBaseURL: false)
+        
+        for (index, queryItem) in (components?.queryItems?.enumerated())! {
+            
+            if queryItem.name == "currentPlayer" {
+                currentPlayer = queryItem.value == "X" ? "O" : "X"
+            } else if queryItem.value != "-" {
+                gameStatus[index-1] = queryItem.value!
+                Buttons[index-1].setTitle(queryItem.value!, for: .normal)
+            }
+        }
+    }
+    
 
 }
